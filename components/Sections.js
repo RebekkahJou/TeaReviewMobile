@@ -6,7 +6,7 @@ import {
 import {View, Text, StyleSheet} from 'react-native';
 import Section from './Section';
 
-const Sections = () => {
+const Sections = ({navigation}) => {
   return (
     <View>
       <Section title="Step One">

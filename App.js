@@ -6,6 +6,7 @@
  * @flow strict-local
  */
 //import 'react-native-gesture-handler';
+import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -25,7 +26,7 @@ import Header from './components/Header';
 import Touchables from './components/Touchables';
 import Sections from './components/Sections';
 
-//const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -35,19 +36,31 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View>
-          <Sections />
-          <LearnMoreLinks />
-          <Touchables />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <SafeAreaView style={backgroundStyle}>
+          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+            style={backgroundStyle}>
+            <Header />
+            <View>
+              <Stack.Screen name="Sections" component={Sections} />
+              <Stack.Screen
+                name="Links"
+                component={LearnMoreLinks}
+                options={{title: 'Links!'}}
+              />
+              <Stack.Screen
+                name="Buttons"
+                component={Touchables}
+                options={{title: 'buttons'}}
+              />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
