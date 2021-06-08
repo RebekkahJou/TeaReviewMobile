@@ -5,71 +5,27 @@
  * @format
  * @flow strict-local
  */
-
+//import 'react-native-gesture-handler';
 import React from 'react';
-import {Node} from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
 import {
-  ImageBackground,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
-  Button,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors, LearnMoreLinks} from 'react-native/Libraries/NewAppScreen';
 
-import Stripe from './components/Stripe';
 import Header from './components/Header';
 import Touchables from './components/Touchables';
+import Sections from './components/Sections';
 
-const Section = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <ImageBackground
-        source={require('./public/purple01.jpg')}
-        style={styles.backgroundimage}>
-        <Text
-          style={[
-            styles.sectionTitle,
-            {
-              color: isDarkMode ? Colors.white : Colors.black,
-            },
-          ]}>
-          {title}
-        </Text>
-      </ImageBackground>
-      <Stripe />
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-      <View style={styles.button}>
-        <Button
-          onPress={() => {
-            alert('Tappity tap');
-          }}
-          title="Itsapress"
-          color="#660066"
-        />
-      </View>
-    </View>
-  );
-};
+//const Stack = createStackNavigator();
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -85,27 +41,11 @@ const App = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Behold, it is--you invited in--
-            <Text style={styles.highlight}>App.js</Text> Noooo, what have you
-            DONE!?
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
+        <View>
+          <Sections />
           <LearnMoreLinks />
+          <Touchables />
         </View>
-        <Touchables />
       </ScrollView>
     </SafeAreaView>
   );
