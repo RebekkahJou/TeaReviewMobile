@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-
-//import {MyStyles} from './MyStylesheet';
+import styles from './MyStylesheet';
 
 const Stripe = () => {
   return (
@@ -15,25 +14,5 @@ const Stripe = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  stripe: {
-    flex: 1,
-    color: 'yellow',
-    flexDirection: 'row',
-  },
-  stripetext: {
-    color: 'white',
-    padding: 5,
-  },
-  blue: {
-    backgroundColor: 'darkblue',
-    flex: 1,
-  },
-  red: {
-    backgroundColor: '#883300 hsl(300, 100%, 30%)',
-    flex: 2,
-  },
-});
 
 export default Stripe;

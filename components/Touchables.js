@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import styles from './MyStylesheet';
 
 export default class Touchables extends Component {
   _onPressButton() {
@@ -63,22 +64,3 @@ export default class Touchables extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 60,
-    alignItems: 'center',
-  },
-  button: {
-    marginBottom: 30,
-    width: 260,
-    alignItems: 'center',
-    backgroundColor: '#2196F3',
-    borderRadius: 30,
-  },
-  buttonText: {
-    textAlign: 'center',
-    padding: 20,
-    color: 'white',
-  },
-});
