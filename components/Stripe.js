@@ -5,10 +5,10 @@ import styles from './MyStylesheet';
 const Stripe = () => {
   return (
     <View style={styles.stripe}>
-      <View style={styles.blue}>
+      <View style={styles.timer}>
         <Text style={styles.stripetext}>There is text in here.</Text>
       </View>
-      <View style={styles.red}>
+      <View style={styles.instructions}>
         <Text style={styles.stripetext}>Here too!</Text>
       </View>
     </View>

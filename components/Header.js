@@ -14,7 +14,8 @@ const Header = () => {
       </View>
       <View style={styles.author}>
         <Text style={styles.highlight}>
-          Mostly by Nyssa McMahan, many years ago
+          Text mostly by Nyssa McMahan, many years ago {'\n'}Web design by
+          Rebekkah Jou, async week
         </Text>
       </View>
     </View>

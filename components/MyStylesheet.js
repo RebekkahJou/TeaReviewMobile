@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 20,
     height: 100,
+    backgroundColor: 'rgba(300, 300, 300, 0.2)',
+    color: 'black',
   },
   sectionDescription: {
     marginTop: 8,
@@ -32,6 +34,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     flexGrow: 1,
     flexWrap: 'wrap',
+    backgroundColor: 'rgba(255, 255, 255, 0.4)',
   },
   ital: {
     fontStyle: 'italic',
@@ -40,10 +43,22 @@ const styles = StyleSheet.create({
     height: null,
     width: null,
   },
+
   button: {
-    color: '#222211',
-    borderRadius: 30,
+    color: 'black',
   },
+  buttonText: {
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  container: {
+    backgroundColor: '#ffcc00',
+    color: 'black',
+    padding: 10,
+    alignItems: 'center',
+    borderRadius: 20,
+  },
+
   stripe: {
     display: 'flex',
     flexDirection: 'row',
@@ -53,12 +68,12 @@ const styles = StyleSheet.create({
     color: 'white',
     padding: 5,
   },
-  blue: {
-    backgroundColor: '#000066',
+  timer: {
+    backgroundColor: '#5900b3',
     flex: 1,
   },
-  red: {
-    backgroundColor: '#bb0000',
+  instructions: {
+    backgroundColor: '#003300',
     flex: 2,
   },
   pic: {
