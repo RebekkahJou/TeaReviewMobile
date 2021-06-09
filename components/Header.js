@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button, Image} from 'react-native';
+import styles from './MyStylesheet';
 
 const Header = () => {
   return (
@@ -9,41 +10,15 @@ const Header = () => {
         style={styles.pic}
       />
       <View style={styles.absolute}>
-        <Text style={styles.title}>I am ABSOLUTE.</Text>
+        <Text style={styles.title}>absoluTEAly in love {'\n'}with TEA</Text>
+      </View>
+      <View style={styles.author}>
+        <Text style={styles.highlight}>
+          Mostly by Nyssa McMahan, many years ago
+        </Text>
       </View>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  stripe: {
-    flex: 1,
-    color: 'yellow',
-    flexDirection: 'row',
-  },
-  blue: {
-    backgroundColor: 'blue',
-    color: 'white',
-    flex: 1,
-  },
-  red: {
-    backgroundColor: 'purple',
-    flex: 2,
-  },
-  pic: {
-    flex: 1,
-    height: 200,
-    width: undefined,
-  },
-  absolute: {
-    position: 'absolute',
-    left: 10,
-  },
-  title: {
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-});
 
 export default Header;

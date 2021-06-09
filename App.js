@@ -11,7 +11,6 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
   useColorScheme,
 } from 'react-native';
 
@@ -19,8 +18,8 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import Header from './components/Header';
 import Touchables from './components/Touchables';
-
 import Sections from './components/Sections';
+import styles from './components/MyStylesheet';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,7 +29,8 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
+    // For multiple styles, include in array
+    <SafeAreaView style={[styles.backgroundContainer, backgroundStyle]}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
