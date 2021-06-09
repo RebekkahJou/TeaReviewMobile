@@ -1,24 +1,38 @@
 import React from 'react';
 import {View, Text, Stack, useColorScheme} from 'react-native';
 
-import {Colors, LearnMoreLinks} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Section from './Section';
 import styles from './MyStylesheet';
 
 const Sections = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const blackinstructions =
+    'Water temp: boiling. Pour over leaves and steep for 3-5 minutes. Some teas will get bitter easily; if the first time your tea is bitter, brew either for a shorter time period, with slightly cooler water, or both. Best for 1-2 steepings.';
+
+  const whiteinst =
+    'Water temp: 175 degrees F. Pour over leaves and steep 2-3 minutes. Resteeps well for multiple steepings.';
+
+  const oolonginst =
+    'Water temp: 190 degrees F. Rinse by pouring over leaves and steeping for 10 seconds, then pouring out this first pot (optional, helps opens leaves up and removes possible dirt). To steep, pour over leaves and steep 30-45 seconds for a first steeping. Add 15 seconds for each following steeping. Increase water temp by 10 degrees if flavor starts to fade. Resteeps fantastically. Good oolongs can resteep so well, I have ran out of day before running out of flavor.';
+
+  const herbalinst =
+    "Water temp: boiling. Pour over leaves and steep for 5+ minutes. Forget it exists, even--it's fine. Most herbal teas do not get bitter. Don't bother resteeping, not usually good for more than the first brew.";
+
+  const greeninst =
+    'Water temp: 175 degrees F. Pour over leaves and steep for 2-3 minutes. If bitter, use cooler water or steep for a shorter time. Green teas become bitter easily if overbrewed. Usually resteeps pretty well, 2-3 brews.';
 
   return (
     <View
       style={{
         backgroundColor: isDarkMode ? Colors.black : Colors.white,
       }}>
-      <Section title="WELCOME">
+      <Section title="WELCOME" time="" instructions="">
         Behold, it is--you invited in--
         <Text style={styles.highlight}>TEEEEAAAAAAA</Text> Noooo, what have you
         DONE!? Nothing left to do but drink it all.
       </Section>
-      <Section title="About Tea">
+      <Section title="About Tea" time="" instructions="">
         <Text>
           In actuality, all tea comes from a singular plant, called{' '}
           <Text style={styles.ital}>Camellia sinensis</Text>. The various
@@ -34,7 +48,10 @@ const Sections = () => {
           quickly review some of the more well-known types:
         </Text>
       </Section>
-      <Section title="Black Tea">
+      <Section
+        title="Black Tea"
+        time={4000 * 60}
+        instructions={{blackinstructions}}>
         <Text style={styles.highlight}>
           Or 'Red Tea' if you are from the East!
         </Text>
@@ -45,23 +62,23 @@ const Sections = () => {
         to reduce the “bite.” I typically think of black tea when it’s “tea
         time” and I want something to accompany a sweet cookie or scone.
       </Section>
-      <Section title="Green Tea">
+      <Section title="Green Tea" time={3000 * 60} instructions={{greeninst}}>
         The tea leaf is unwilted and unoxidized. It has a grassy ﬂavor, and
         contains more caffeine than white tea, but less than Oolong and black
         tea. Green tea is most commonly associated with Asian rituals and tea
         ceremonies.
       </Section>
-      <Section title="White Tea">
+      <Section title="White Tea" time={2500 * 60} instructions={{whiteinst}}>
         The tea leaf is wilted and unoxidized. White tea has a faint, delicate
         ﬂavor, and the least amount of caffeine.
       </Section>
-      <Section title="Oolong Tea">
+      <Section title="Oolong Tea" time={500 * 60} instructions={{oolonginst}}>
         The tea leaf is wilted, bruised, and partially oxidized. Oolong tea has
         slightly more caffeine than green tea, but not as much as black tea.
         Oolong teas are full bodied in ﬂavor and aroma ranging from green and
         ﬂoral to dark and roasted with many notes between.
       </Section>
-      <Section title="Herbal Tea">
+      <Section title="Herbal Tea" time={5000 * 60} instructions={{herbalinst}}>
         Other herbal infusions (also lacking caffeine) are really just mixes of
         dried fruits, herbs, and ﬂowers, and are sometimes blended with tea.
         Common herbs, seeds, barks, and ﬂowers found in tisanes included
@@ -72,14 +89,13 @@ const Sections = () => {
         herbal infusions included orange peel, lemon peel, various dried
         berries, apples, pears, pineapple, and more!
       </Section>
-      <Section title="Other Teas">
+      <Section title="Other Teas" time="" instructions="">
         There are other categories and sub-categories teas, too, such as pu-erh
         tea (usually considered a type of black tea), yerba mates, Eastern
         Beauty (aka "puff" or "formosa") tea, and more. But let's just stick to
         the basics for now, because I don't want to spend all afternoon
         copy-pasting and finding good research.
       </Section>
-      <LearnMoreLinks />
     </View>
   );
 };

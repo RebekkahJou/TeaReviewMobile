@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  ImageBackground,
-  Text,
-  useColorScheme,
-  View,
-  Button,
-} from 'react-native';
+import {ImageBackground, Text, useColorScheme, View} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
@@ -13,7 +7,7 @@ import Stripe from './Stripe';
 import styles from './MyStylesheet';
 import Touchbutton from './TouchButton';
 
-const Section = ({children, title}) => {
+const Section = ({children, title, time, instructions}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -33,7 +27,7 @@ const Section = ({children, title}) => {
         {children}
       </Text>
       <View style={styles.button}>
-        <Stripe />
+        <Stripe time={time} instructions={instructions} />
         {/* <Button
           onPress={() => {
             alert('Tappity tap');
