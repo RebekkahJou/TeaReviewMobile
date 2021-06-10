@@ -3,13 +3,13 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import styles from './MyStylesheet';
 
 export default class Touchbutton extends Component {
-  _onPressButton() {
-    alert('You tapped the button!');
-  }
+  // _onPressButton() {
+  //   alert('You tapped the button!');
+  // }
 
-  _onLongPressButton() {
-    alert('You long-pressed the button!');
-  }
+  // _onLongPressButton() {
+  //   alert('You long-pressed the button!');
+  // }
 
   render() {
     return (

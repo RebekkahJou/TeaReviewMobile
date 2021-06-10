@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 
   stripe: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     flex: 1,
   },
   stripetext: {

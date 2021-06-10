@@ -5,10 +5,10 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import Stripe from './Stripe';
 import styles from './MyStylesheet';
-import Touchbutton from './TouchButton';
 
 const Section = ({children, title, time, instructions}) => {
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <View style={styles.sectionContainer}>
       <ImageBackground
@@ -28,14 +28,6 @@ const Section = ({children, title, time, instructions}) => {
       </Text>
       <View style={styles.button}>
         <Stripe time={time} instructions={instructions} />
-        {/* <Button
-          onPress={() => {
-            alert('Tappity tap');
-          }}
-          title="Itsapress"
-          color="#ffcc00"
-        /> */}
-        <Touchbutton />
       </View>
     </View>
   );
