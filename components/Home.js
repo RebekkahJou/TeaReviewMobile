@@ -7,6 +7,7 @@
  */
 import React from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -16,7 +17,6 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import Header from './Header';
-import Touchables from './Touchables';
 import Sections from './Sections';
 import styles from './MyStylesheet';
 
@@ -35,11 +35,20 @@ const Home = ({navigation}) => {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header />
+        <Button
+          title="Touchables"
+          onPress={() => {
+            navigation.navigate('TouchUs', {name: 'buttons'});
+          }}
+        />
         <Sections />
-        <Touchables />
       </ScrollView>
     </SafeAreaView>
   );
+};
+
+const TouchUsScreen = ({navigation, route}) => {
+  return <Text>This is button's route</Text>;
 };
 
 export default Home;

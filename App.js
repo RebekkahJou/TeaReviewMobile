@@ -13,6 +13,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './components/Home';
+import Touchables from './components/Touchables';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="TouchUs" component={Touchables} />
       </Stack.Navigator>
     </NavigationContainer>
   );
