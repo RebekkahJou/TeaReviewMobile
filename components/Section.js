@@ -9,6 +9,13 @@ import styles from './MyStylesheet';
 const Section = ({children, title, time, instructions}) => {
   const isDarkMode = useColorScheme() === 'dark';
 
+  let stripeArea;
+  if (time) {
+    stripeArea = <Stripe time={time} instructions={instructions} />;
+  } else {
+    stripeArea = <Text> </Text>;
+  }
+
   return (
     <View style={styles.sectionContainer}>
       <ImageBackground
@@ -26,9 +33,7 @@ const Section = ({children, title, time, instructions}) => {
         ]}>
         {children}
       </Text>
-      <View style={styles.button}>
-        <Stripe time={time} instructions={instructions} />
-      </View>
+      <View style={styles.button}>{stripeArea}</View>
     </View>
   );
 };
