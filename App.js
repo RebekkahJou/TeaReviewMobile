@@ -10,10 +10,13 @@ import React from 'react';
 import {useColorScheme} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './components/Home';
 import Touchables from './components/Touchables';
+import Section from './components/Section';
+import SectionData from './components/info';
+import SingleTea from './components/SingleTea';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +32,9 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="TouchUs" component={Touchables} />
+        {SectionData.map(({id, title}) => {
+          return <Stack.Screen name={title} key={id} component={SingleTea} />;
+        })}
       </Stack.Navigator>
     </NavigationContainer>
   );

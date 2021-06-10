@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   stripetext: {
     color: 'white',
     padding: 5,
+    textAlign: 'center',
   },
   timer: {
     backgroundColor: '#5900b3',
