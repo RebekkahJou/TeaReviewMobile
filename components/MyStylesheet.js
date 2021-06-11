@@ -1,5 +1,15 @@
+import {transform} from '@babel/core';
 import React from 'react';
 import {Platform, StatusBar, StyleSheet} from 'react-native';
+
+//colors above stylesheet
+export const colors = {
+  darkgreen: '#003300',
+  purple: '#5900b3',
+  gold: '#ffcc00',
+  transgrey: 'rgba(255, 255, 255, 0.4)',
+  translightgrey: 'rgba(300, 300, 300, 0.2)',
+};
 
 const styles = StyleSheet.create({
   backgroundContainer: {
@@ -9,12 +19,13 @@ const styles = StyleSheet.create({
     marginTop: 32,
     paddingHorizontal: 24,
   },
+
   sectionTitle: {
     fontSize: 24,
     fontWeight: 'bold',
     padding: 20,
     height: 100,
-    backgroundColor: 'rgba(300, 300, 300, 0.2)',
+    backgroundColor: colors.translightgrey,
     color: 'black',
   },
   sectionDescription: {
@@ -34,7 +45,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     flexGrow: 1,
     flexWrap: 'wrap',
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    backgroundColor: colors.transgrey,
   },
   ital: {
     fontStyle: 'italic',
@@ -43,16 +54,29 @@ const styles = StyleSheet.create({
     height: null,
     width: null,
   },
-
+  headerContainer: {
+    height: 200,
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    flexWrap: 'wrap',
+    flexShrink: 1,
+    flexGrow: 1,
+  },
   button: {
     color: 'black',
+    padding: 10,
+    borderRadius: 20,
+    justifyContent: 'center',
+    backgroundColor: colors.gold,
   },
   buttonText: {
     fontWeight: 'bold',
     fontSize: 16,
+    color: 'black',
   },
   container: {
-    backgroundColor: '#ffcc00',
+    backgroundColor: colors.gold,
     color: 'black',
     padding: 10,
     alignItems: 'center',
@@ -63,6 +87,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
+    flexWrap: 'wrap',
+    flexShrink: 1,
+    flexGrow: 1,
   },
   stripetext: {
     color: 'white',
@@ -70,12 +97,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   timer: {
-    backgroundColor: '#5900b3',
+    backgroundColor: colors.purple,
     flex: 1,
+    flexWrap: 'wrap',
+    flexShrink: 1,
   },
   instructions: {
-    backgroundColor: '#003300',
-    flex: 2,
+    backgroundColor: colors.darkgreen,
+    flexWrap: 'wrap',
+    flexBasis: 1,
   },
   pic: {
     flex: 1,

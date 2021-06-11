@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import styles from './MyStylesheet';
-import TouchButton from './TouchButton';
 
 const Stripe = props => {
   const instructions = props.instructions;
@@ -9,22 +8,28 @@ const Stripe = props => {
     time ? 'Hold button to show brewing instructions' : ' ',
   );
   const time = props.time;
-  const [countdown, setCountdown] = useState(time);
-  const [initialTime, setInitialTime] = useState(time);
-  const [timeDisplay, setTimeDisplay] = useState(time);
+  console.log(instDisplay);
+
+  const [countdown, setCountdown] = useState(time / 1000);
+  const [initialTime, setInitialTime] = useState(time / 1000);
+  const [timeDisplay, setTimeDisplay] = useState(`${countdown} seconds`);
 
   const [isShortPressed, setIsShortPressed] = useState(false);
   const [isLongPressed, setIsLongPressed] = useState(false);
 
-  console.log('Instructions', instDisplay);
-  console.log('time', countdown);
-
   useEffect(() => {
     if (!isShortPressed) {
       setCountdown(initialTime);
-      setTimeDisplay(countdown);
+      setTimeDisplay(`${countdown} seconds`);
     } else {
-      setTimeDisplay(countdown ? countdown : <Text>00:00</Text>);
+      // function timer() {
+      //   let interval = setInterval(downcount, 1000);
+      // }
+      // function downcount() {
+      //   setCountdown(countdown - 1);
+      // }
+      // return clearInterval(timer);
+      setTimeDisplay(`${countdown} sec`);
     }
 
     if (!isLongPressed) {
@@ -49,10 +54,14 @@ const Stripe = props => {
       <View style={styles.instructions}>
         <Text style={styles.stripetext}>{instDisplay}</Text>
       </View>
-      <TouchButton
-        onPress={() => setIsShortPressed(!isShortPressed)}
-        onLongPress={() => setIsLongPressed(!isLongPressed)}
-      />
+      <View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => setIsShortPressed(!isShortPressed)}
+          onLongPress={() => setIsLongPressed(!isLongPressed)}>
+          <Text style={styles.buttonText}>The Button</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

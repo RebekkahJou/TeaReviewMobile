@@ -14,7 +14,6 @@ import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './components/Home';
 import Touchables from './components/Touchables';
-import Section from './components/Section';
 import SectionData from './components/info';
 import SingleTea from './components/SingleTea';
 

@@ -4,11 +4,8 @@ import styles from './MyStylesheet';
 
 const Header = () => {
   return (
-    <View style={styles.stripe}>
-      <Image
-        source={require('../public/defaultCampus.jpg')}
-        style={styles.pic}
-      />
+    <View style={styles.headerContainer}>
+      <Image source={require('../public/yellow02.jpg')} style={styles.pic} />
       <View style={styles.absolute}>
         <Text style={styles.title}>absoluTEAly in love {'\n'}with TEA</Text>
       </View>

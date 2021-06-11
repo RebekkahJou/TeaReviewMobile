@@ -5,22 +5,22 @@ import {
   useColorScheme,
   Button,
   View,
+  Image,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-
-import Stripe from './Stripe';
+import SingleStripe from './SingleStripe';
 import styles from './MyStylesheet';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const SingleTea = ({route, navigation}) => {
   const {children, title, time, instructions} = route.params;
   const isDarkMode = useColorScheme() === 'dark';
 
   let stripeArea;
+  console.log(time);
   if (time) {
-    stripeArea = <Stripe time={time} instructions={instructions} />;
+    stripeArea = <SingleStripe time={time} instructions={instructions} />;
   } else {
-    stripeArea = <Text> </Text>;
+    stripeArea = <Image source={require('../public/teacup.png')} />;
   }
 
   return (
@@ -31,6 +31,12 @@ const SingleTea = ({route, navigation}) => {
         <Text style={[styles.sectionTitle]}>{title}</Text>
       </ImageBackground>
 
+      <Button
+        title="Back"
+        color="#003300"
+        onPress={() => navigation.goBack()}
+      />
+
       <Text
         style={[
           styles.sectionDescription,
@@ -39,15 +45,9 @@ const SingleTea = ({route, navigation}) => {
           },
         ]}>
         {children}
+        {'\n\n'}
       </Text>
-
-      <View style={styles.button}>{stripeArea}</View>
-
-      <Button
-        title="Back"
-        color="#003300"
-        onPress={() => navigation.goBack()}
-      />
+      {stripeArea}
     </View>
   );
 };
