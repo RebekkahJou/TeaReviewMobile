@@ -18,7 +18,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import Header from './Header';
 import Sections from './Sections';
-import styles from './MyStylesheet';
+import styles from '../public/MyStylesheet';
 
 const Home = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';

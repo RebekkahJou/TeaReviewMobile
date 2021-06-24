@@ -1,19 +1,21 @@
 import React from 'react';
-import {ImageBackground, Text, useColorScheme, View} from 'react-native';
+import {ImageBackground, Image, Text, useColorScheme, View} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import Stripe from './Stripe';
-import styles from './MyStylesheet';
+import styles from '../public/MyStylesheet';
 
 const Section = ({children, title, time, instructions}) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   let stripeArea;
   if (time) {
-    stripeArea = <Stripe time={time} instructions={instructions} />;
+    stripeArea = (
+      <Stripe time={time} instructions={instructions} style={styles.button} />
+    );
   } else {
-    stripeArea = <Text> </Text>;
+    <Image source={require('../public/teacup.png')} styles={styles.pic} />;
   }
 
   return (
@@ -33,7 +35,7 @@ const Section = ({children, title, time, instructions}) => {
         ]}>
         {children}
       </Text>
-      <View style={styles.button}>{stripeArea}</View>
+      <View>{stripeArea}</View>
     </View>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button, Image} from 'react-native';
-import styles from './MyStylesheet';
+import styles from '../public/MyStylesheet';
 
 const Header = () => {
   return (
@@ -11,7 +11,7 @@ const Header = () => {
       </View>
       <View style={styles.author}>
         <Text style={styles.highlight}>
-          Text mostly by Nyssa McMahan, many years ago {'\n'}Web design by
+          design by{'\n'}
           Rebekkah Jou, async week
         </Text>
       </View>

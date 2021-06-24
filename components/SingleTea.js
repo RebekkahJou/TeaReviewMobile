@@ -8,7 +8,7 @@ import {
   Image,
 } from 'react-native';
 import SingleStripe from './SingleStripe';
-import styles from './MyStylesheet';
+import styles from '../public/MyStylesheet';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const SingleTea = ({route, navigation}) => {

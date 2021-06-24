@@ -70,11 +70,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.gold,
   },
+
   buttonText: {
     fontWeight: 'bold',
     fontSize: 16,
     color: 'black',
   },
+
+  teaButton: {
+    backgroundColor: colors.gold,
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 16,
+    padding: 10,
+    alignItems: 'center',
+    borderRadius: 20,
+  },
+
   container: {
     backgroundColor: colors.gold,
     color: 'black',
@@ -109,7 +121,7 @@ const styles = StyleSheet.create({
   },
   pic: {
     flex: 1,
-    height: 200,
+    height: null,
     width: undefined,
   },
   absolute: {

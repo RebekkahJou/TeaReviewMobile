@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
-import styles from './MyStylesheet';
+import styles from '../public/MyStylesheet';
 import TouchButton from './TouchButton';
 
 const SingleStripe = props => {
@@ -10,13 +10,18 @@ const SingleStripe = props => {
   return (
     <View style={styles.stripe}>
       <View style={styles.timer}>
-        <Text style={styles.stripetext}>{time}</Text>
+        <Text style={styles.stripetext}>
+          Suggested brewing time: {time / 60000}
+        </Text>
       </View>
 
       <View style={styles.instructions}>
         <Text style={styles.stripetext}>{instructions}</Text>
       </View>
       <TouchButton />
+      <View>
+        <Text style={styles.stripetext}>Reviews</Text>
+      </View>
     </View>
   );
 };

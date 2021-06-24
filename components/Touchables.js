@@ -8,7 +8,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import styles from './MyStylesheet';
+import styles from '../public/MyStylesheet';
 
 export default class Touchables extends Component {
   _onPressButton() {
@@ -21,7 +21,7 @@ export default class Touchables extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.teaButton}>
         <TouchableHighlight onPress={this._onPressButton} underlayColor="white">
           <View style={styles.button}>
             <Text style={styles.buttonText}>TouchableHighlight</Text>

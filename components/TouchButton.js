@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import styles from './MyStylesheet';
+import styles from '../public/MyStylesheet';
 
 export default class Touchbutton extends Component {
   // _onPressButton() {
@@ -13,7 +13,7 @@ export default class Touchbutton extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.teabutton}>
         <TouchableOpacity
           onPress={this._onPressButton}
           onLongPress={this._onLongPressButton}>
