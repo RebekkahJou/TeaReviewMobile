@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   View,
   ScrollView,
@@ -10,8 +11,6 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Section from './Section';
-
-import SectionData from './info';
 
 const Sections = () => {
   const isDarkMode = useColorScheme() === 'dark';

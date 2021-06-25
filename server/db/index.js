@@ -4,12 +4,12 @@
 const db = require('./db');
 const Sequelize = require('sequelize');
 //const User = require('./models/user');
-const TeaType = require('./models/teaTypes');
-const Review = require('./models/teaTypes');
+const Section = require('./models/sections');
+const Review = require('./models/reviews');
 
 //associations could go here!
-TeaType.hasMany(Review);
-Review.belongsTo(TeaType);
+Section.hasMany(Review);
+Review.belongsTo(Section);
 //one-many association
 // foreign key -> orderId
 
@@ -17,7 +17,7 @@ module.exports = {
   db,
   models: {
     //User,
-    TeaType,
+    Section,
     Review,
   },
 };

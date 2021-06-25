@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const TeaType = db.define('teaType', {
+const Section = db.define('section', {
   title: {
     type: Sequelize.STRING,
   },
@@ -26,4 +26,4 @@ const TeaType = db.define('teaType', {
 
 // class methods
 
-module.exports = TeaType;
+module.exports = Section;

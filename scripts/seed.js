@@ -2,12 +2,12 @@
 
 const {
   db,
-  models: {User, Review, TeaType},
+  models: {User, Review, Section},
 } = require('../server/db');
 
 const reviews = [
   {
-    teaTypeId: 3,
+    sectionId: 3,
     format: 'loose-leaf',
     teaName: 'Copper Knot Hongcha',
     flavors: 'Natural',
@@ -22,7 +22,7 @@ const reviews = [
       "To me Copper Knot really does taste vaguely like copper. It's a classic, natural \"black tea\" taste, but because it's a lighter flavor than most black teas, it winds up almost tasting metallic, with a hint of citrus tang minus the citrus taste. I think it's a tea that should be drunk plain--milk and sugar would certainly be too much and overpower the flavor--but if you were going to sweeten it, a little lemon and honey would probably go very well. \n\n  I really like this tea. Even though it was named for its color and not its flavor, the name is apt for the taste, too. It's something I can see drinking in the afternoon, curled up with a good book or just relaxing on the balcony. If you like unflavored English Breakfast or Earl Grey, especially if you drink either plain or with lemon and honey, you'd probably like Copper Knot. Do remember that it's not as strong and will probably taste weak the first time you sip it, but don't overbrew it to compensate (We brewed it too long the first time and it came out quite bitter and far too dark, ruining the tea. Go with 2 minutes instead of 3 and don't use water that is too hot). The lighter flavor is part of the charm, and is what creates the unique metal taste.",
   },
   {
-    teaTypeId: 7,
+    sectionId: 7,
     format: 'loose-leaf',
     teaName: 'Silver Yin Zen Pearls',
     flavors: 'Natural',
@@ -37,7 +37,7 @@ const reviews = [
       "Normally, this tea is outside my price range (I try to be strict with my budget), but with a 75% off sale, I took the chance to treat myself. And I will say, this is a very nice white tea. Unfortunately, it's not on the website as of this posting, so you'll have to chance a trip into the store in person to try to find it, or buy it from another site. \n\n  For a first-cup taste, it's a good, high-quality white tea. White teas tend to be very mild tasting (if you haven't had it before, think 'green tea light' or 'slightly flavored hot water'). They're great for antioxidants, and I personally like the flavor, but many people find white teas too light. I brewed an extra teaspoon over what's recommended for my first try, so my tea was stronger than normal, which I enjoy. The next time I made it, I used closer to the recommended 1 tsp for 8 oz, and still found it full-bodied for a white tea. That said, I've had comparable quality flavor at less of a price. \n\n    Where this tea really stands out to me is in the rebrew. I don't think I've ever had a white tea that still had this much flavor after four brews. And making the tea the next day at work, I had 3 rebrews throughout the day, all still richly flavored. I didn't try brewing it a fourth only because I went home. \n\n   If you're still getting used to teas and need stronger flavors, you might want to find a less expensive white tea and add a touch of lemon or a raspberry. I wouldn't recommend beginning to drink white tea with this tea, because if I hadn't tried a wide variety of white teas, I wouldn't really appreciate how nice this one is. It's really too expensive a tea to want to dilute the taste by adding anything. Maybe a drop of honey or sugar if you prefer your tea sweetened, but keep it light enough not to cover the taste of the tea itself, or you'll just be wasting your money. However, if you like the taste of plain white tea and will be drinking tea for a long enough period of time to need multiple rebrews, it may well be worth the investment.",
   },
   {
-    teaTypeId: 4,
+    sectionId: 4,
     format: 'loose-leaf',
     teaName: 'Sunflower Jasmine Tea',
     flavors: 'floral, natural',
@@ -51,7 +51,7 @@ const reviews = [
       "The smell of this tea is heavenly. I'd know it was jasmine tea without ever reading the label! It's pretty sensitive, though: I think I burnt the leaves either by oversteeping or using water that was too hot, and since it was coffee machine water (slightly cooled, even) and I steeped it less than 2 minutes, that means it's a finicky brand. Definitely becomes bitter when oversteeped, but from prior experimentation, I know it can also be slightly sweet and completely not bitter if prepared carefully.\n\n I do taste both green tea and a floral note, which means neither flavor overpowers the other. It's a nicely balanced blend, and while I'm usually senstive to bitter, the strong jasmine scent makes me enjoy it even poorly brewed. I'm actually very fond of this tea (okay, so it was the first loose-leaf tea I ever tried, a gift from a college roommate) and while it's not the fanciest tea I've had, it's inexpensive, tasty, and sweetly scented. /n/n  Despite starting on this tea myself, it's probably not the best first-ever loose-leaf green tea. Once you've come to enjoy green tea with a more resilient brand, then it's a nice tea for learning to brew delicate teas, as you'll know when you get it wrong but it'll still be drinkable. It does take some practice to not make bitter, but at the price (you can get a pound on Amazon for under $10), you can experiment all you want. Its also a good go-to tea for a pick-me-up anytime, especially on a budget--always make me feel like I'm drinking flowers! If you dislike floral teas, however, this is absolutely the wrong tea for you.",
   },
   {
-    teaTypeId: 3,
+    sectionId: 3,
     format: 'loose-leaf',
     teaName: 'Festivus',
     flavors: 'Floral, spicy',
@@ -66,7 +66,7 @@ const reviews = [
       "I expected a darker brew from a black tea, but it's fairly light even on the first brew. But since it's got at least as much in the way of other ingredients as it does tea leaves, that's not entirely a surprise. There are actually dried orange peels in this one. Despite the poor rebrewing, it's a pretty good tea, with half the pleasure in the scent. \n\n  Spices include black tea, cinnamon, cardamom, cloves, and pink peppercorn; it also includes orange and apple pieces. I'm pretty certain the black tea is just so you can say it's caffeinated, because I barely taste the tea at all. However, I happen to like the smell of orange and spices, so I like this tea. If you enjoy fruity herbal teas or Bigelow's Constant Comment, you'd probably like this one, too. I honestly haven't tried the latter, so I can't tell you exactly how they compare.",
   },
   {
-    teaTypeId: 8,
+    sectionId: 8,
     format: 'loose-leaf',
     teaName: 'Rooibos Cream Caramel',
     flavors: 'natural',
@@ -80,7 +80,7 @@ const reviews = [
       "I've always found rooibos to be interesting teas. They taste vaguely fruity to me without tasting fruity (yes, I know that makes no sense!). This red tea brews a rich caramel color, and smells like caramel heated to the point of almost but not quite burnt (I think that's the \"creme\"), but doesn't taste like caramel. It's not dissimilar to black tea in taste, but lacks the bite of the tannins that give black tea the black tea taste, and is just a tad tangier. And that's the best I can describe it. /n/n  I feel like this tea would do very well with sugar, maybe a touch of milk or cream. It practically begs to be blended with other teas. I'd add it to an early grey, I think, to enhance the black tea scent, or a maybe a \"sweet\" tea like a chai or Teavana's Slimful Chocolate Decadence. On its own, I don't find it particularly extraordinary in terms of rooibos teas. It smells amazing, but the caramel flavor is almost unnoticeable as compared to regular rooibos tea.  \n\n  Not quite as caramel-colored with  milk and sugar... But tastier! \n\n   I did add milk and sugar my second cup, and it much improved the flavor. Normally I dislike sweetening my tea, but in this tea it really balances it out. I highly recommend having milk and sugar at hand if you plan to drink this tea without blending it with something else. \n\n  Not my favorite tea, despite the smell. The scent sets up high expectations for the flavor, but the flavor falls short of the promise without sweetening it, and I like a tea that can stand on its own. On the other hand, sweetened it's actually quite good. I'd say it's best for blending with other teas. If you like fruity teas and black teas, but want to cut out the caffeine, rooibos might be a good match for you.",
   },
   {
-    teaTypeId: 5,
+    sectionId: 5,
     format: 'loose-leaf',
     teaName: 'Osmanthus Jin Xuan',
     flavors: 'Floral, earthy, milky',
@@ -95,7 +95,7 @@ const reviews = [
       "I would go to Taiwan just to get more of this tea. \n\n Okay, that's a hyperbole, especially since it's available online. But if it wasn't, and I was going to Taiwan, getting more would be on the list of things to do, because for its price it's exceptional. Note that some of the other places that sell it online, such as Amazon, charge $20 for the tin, so I suggest buying through the main site. \n\n  The smell is engaging and at least half, if not 75%, of the attraction. It's a balance between the earthy, fermented oolong and flowers--think peat moss and osmanthus (a Chinese flower that reminds me of the American mums that come out every fall, or even a bit of heavy sunflower). It's very relaxing, and something about it makes me feel connected to nature and/or anyone I've roped into drinking it with me. \n\n  As far as taste goes, it's light, and if prepared with a short brew and water under 190, just a bit sweet. Even fully steeped the color is a light gold. It's not heavy on flavor; if you want it strong (admittedly, I usually do myself), bump up the tea by an extra half-teaspoon or so. A little goes a long way, though, and 1.5 tsp usually fills my tea strainer 3/4 full by the time the tea has fully expanded. I'd say it tastes good, but on par with a good tea for its price range, so if you drink more for flavor than aroma, you'll probably still like it, but be less in love with it. \n\n  Like most teas, steeping too hot or too long can make it bitter; it's fairly resilient but not exceptionally so. On a scale of 1 (brew it perfect or hate it) to 10 (throw in the tea and some boiling water and then go do the laundry; it'll be fine!), I'd give it about a 6, with most teas falling in the 3-5 range. \n\n If you like oolongs, I'd recommend this tea. If you've never tried oolong before, it's not a terrible place to start, so long as you enjoy floral teas (if you like both green tea and black tea, there's a good chance you'll like oolongs, since it's a light flavor but a strong aroma; if you don't like both, it's a 50-50); be prepared for a different scent than you're used to, since oolong teas are fermented. If there's a tea store near you that offers sampling, or one of your friends has some, I suggest doing a couple of tastings. Try it twice before you make up your mind, because it's kind of unexpected the first time you try it, so it helps to have a second tasting knowing what to expect.",
   },
   {
-    teaTypeId: 5,
+    sectionId: 5,
     format: 'loose-leaf',
     teaName: 'Coconut Oolong',
     flavors: 'Coconut',
@@ -203,9 +203,9 @@ const seed = async () => {
     //   })
     // );
     // seed products database
-    const seedTeaTypes = await Promise.all(
+    const seedSections = await Promise.all(
       types.map(tea => {
-        return TeaType.create(tea);
+        return Section.create(tea);
       }),
     );
     const seedReviews = await Promise.all(
@@ -214,7 +214,7 @@ const seed = async () => {
       }),
     );
     console.log('successfully seeded!');
-    return [seedReviews, seedTeaTypes];
+    return [seedReviews, seedSections];
   } catch (err) {
     console.log(err);
   }

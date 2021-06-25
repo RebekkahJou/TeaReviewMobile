@@ -22,7 +22,9 @@ const Stripe = props => {
   return (
     <View style={styles.stripe}>
       <View style={styles.timer}>
-        <Text style={styles.stripetext}>Suggested brewing time: {time}</Text>
+        <Text style={styles.stripetext}>
+          Average brewing time: {time} minutes
+        </Text>
       </View>
       <View style={styles.instructions}>
         <Text style={styles.stripetext}>{instDisplay}</Text>
@@ -31,7 +33,7 @@ const Stripe = props => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => setIsShortPressed(!isShortPressed)}>
-          <Text style={styles.buttonText}>The Button</Text>
+          <Text style={styles.buttonText}>Touch to show instructions</Text>
         </TouchableOpacity>
       </View>
     </View>
