@@ -1,13 +1,17 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Reviews = db.define('review', {
+const Review = db.define('review', {
   teaName: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
     },
+  },
+
+  format: {
+    type: Sequelize.ENUM('loose-leaf', 'bagged', 'brick', 'other'),
   },
   flavors: {
     type: Sequelize.STRING,
@@ -34,4 +38,4 @@ const Reviews = db.define('review', {
 
 // class methods
 
-module.exports = Reviews;
+module.exports = Review;
