@@ -11,16 +11,25 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Section from './Section';
+import {fetchAllSections} from '../store/sections';
 
 const Sections = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const navigation = useNavigation();
+  const sections = useSelector(state => state.sections);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllSections);
+  }, [dispatch]);
+
   return (
     <ScrollView
       style={{
         backgroundColor: isDarkMode ? Colors.black : Colors.white,
       }}>
-      {SectionData.map(section => {
+      {sections.map(section => {
         return (
           <View key={section.id}>
             {section.time ? (
@@ -41,7 +50,7 @@ const Sections = () => {
                 navigation.navigate(`${section.title}`, {
                   title: section.title,
                   instructions: section.instructions,
-                  children: section.description,
+                  description: section.description,
                   time: section.time,
                 });
               }}

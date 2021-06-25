@@ -6,16 +6,17 @@
  * @flow strict-local
  */
 import 'react-native-gesture-handler';
-import React from 'react';
 import {useColorScheme} from 'react-native';
-
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import React, {useEffect} from 'react';
+import {useSelector, Provider} from 'react-redux';
 import Home from './components/Home';
 import Touchables from './components/Touchables';
-import SectionData from './components/info';
 import SingleTea from './components/SingleTea';
+import {store} from './store';
+import {fetchAllSections} from './store/sections';
 
 const Stack = createStackNavigator();
 
@@ -26,16 +27,20 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const sections = useSelector(state => state.sections);
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="TouchUs" component={Touchables} />
-        {SectionData.map(({id, title}) => {
-          return <Stack.Screen name={title} key={id} component={SingleTea} />;
-        })}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="TouchUs" component={Touchables} />
+          {sections.map(({id, title}) => {
+            return <Stack.Screen name={title} key={id} component={SingleTea} />;
+          })}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 

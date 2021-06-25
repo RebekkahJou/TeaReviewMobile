@@ -119,10 +119,10 @@ const initialState = {
 };
 
 // REDUCER
-const teaTypesReducer = (state = initialState, action) => {
+const sectionsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_ALL_TEATYPES:
-      return {...state, allSections: action.teaTypes};
+    case GET_ALL_SECTIONS:
+      return {...state, allSections: action.sections};
     // case GET_SINGLE_PRODUCT:
     //   return {...state, singleProduct: action.product};
     // case ADD_NEW_PRODUCT:
@@ -148,4 +148,4 @@ const teaTypesReducer = (state = initialState, action) => {
   }
 };
 
-export default teaTypesReducer;
+export default sectionsReducer;

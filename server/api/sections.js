@@ -8,7 +8,7 @@ module.exports = router;
 //api/sections
 router.get('/', async (req, res, next) => {
   try {
-    const sections = await TeaType.findAll({
+    const sections = await Section.findAll({
       attributes: ['id', 'title', 'time', 'description', 'instructions'],
     });
     res.json(sections);
@@ -20,7 +20,7 @@ router.get('/', async (req, res, next) => {
 //api/sections/:sectionId
 router.get('/:sectionId', async (req, res, next) => {
   try {
-    const section = await TeaType.findByPk(req.params.sectionId, {
+    const section = await Section.findByPk(req.params.sectionId, {
       attributes: ['id', 'title', 'time', 'description', 'instructions'],
     });
     res.json(section);

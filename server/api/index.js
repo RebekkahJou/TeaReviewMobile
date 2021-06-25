@@ -2,7 +2,7 @@ const router = require('express').Router();
 module.exports = router;
 
 //router.use("/users", require("./users"));
-router.use('/sections', require('./teaTypes'));
+router.use('/sections', require('./sections'));
 //router.use("/reviews", require("./reviews"));
 
 router.use((req, res, next) => {

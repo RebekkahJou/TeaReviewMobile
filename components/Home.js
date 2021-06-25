@@ -8,6 +8,7 @@
 import React from 'react';
 import {
   Button,
+  Text,
   SafeAreaView,
   ScrollView,
   StatusBar,

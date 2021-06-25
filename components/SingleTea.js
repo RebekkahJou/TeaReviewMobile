@@ -12,7 +12,7 @@ import styles from '../public/MyStylesheet';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const SingleTea = ({route, navigation}) => {
-  const {children, title, time, instructions} = route.params;
+  const {description, title, time, instructions} = route.params;
   const isDarkMode = useColorScheme() === 'dark';
 
   let stripeArea;
@@ -44,7 +44,7 @@ const SingleTea = ({route, navigation}) => {
             color: isDarkMode ? Colors.light : Colors.dark,
           },
         ]}>
-        {children}
+        {description}
         {'\n\n'}
       </Text>
       {stripeArea}

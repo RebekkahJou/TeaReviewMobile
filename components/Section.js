@@ -6,7 +6,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Stripe from './Stripe';
 import styles from '../public/MyStylesheet';
 
-const Section = ({children, title, time, instructions}) => {
+const Section = ({description, title, time, instructions}) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   let stripeArea;
@@ -33,7 +33,7 @@ const Section = ({children, title, time, instructions}) => {
             color: isDarkMode ? Colors.light : Colors.dark,
           },
         ]}>
-        {children}
+        {description}
       </Text>
       <View>{stripeArea}</View>
     </View>
