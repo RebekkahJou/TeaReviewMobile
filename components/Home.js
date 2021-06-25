@@ -35,13 +35,6 @@ const Home = ({navigation}) => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
-        <Button
-          title="Touchables"
-          onPress={() => {
-            navigation.navigate('TouchUs', {name: 'buttons'});
-          }}
-        />
         <Sections />
       </ScrollView>
     </SafeAreaView>

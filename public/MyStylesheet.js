@@ -142,6 +142,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
   },
+  nothingHere: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
 });
 
 export default styles;

@@ -10,10 +10,10 @@ const GET_ALL_SECTIONS = 'GET_ALL_SECTIONS';
 // const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
 // ACTION CREATORS
-const setSections = sections => {
+const setSections = allSections => {
   return {
     type: GET_ALL_SECTIONS,
-    sections,
+    allSections,
   };
 };
 
@@ -122,7 +122,7 @@ const initialState = {
 const sectionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_SECTIONS:
-      return {...state, allSections: action.sections};
+      return {...state, allSections: action.allSections};
     // case GET_SINGLE_PRODUCT:
     //   return {...state, singleProduct: action.product};
     // case ADD_NEW_PRODUCT:
