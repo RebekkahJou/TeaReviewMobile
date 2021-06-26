@@ -4,7 +4,7 @@ const TOKEN = 'token';
 
 // ACTION TYPES
 const GET_ALL_SECTIONS = 'GET_ALL_SECTIONS';
-// const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT';
+const GET_SINGLE_SECTION = 'GET_SINGLE_SECTION';
 // const ADD_NEW_PRODUCT = 'ADD_NEW_PRODUCT';
 // const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 // const DELETE_PRODUCT = 'DELETE_PRODUCT';
@@ -17,12 +17,12 @@ const setSections = allSections => {
   };
 };
 
-// const setSingleProducts = product => {
-//   return {
-//     type: GET_SINGLE_PRODUCT,
-//     product,
-//   };
-// };
+const setSingleSection = section => {
+  return {
+    type: GET_SINGLE_SECTION,
+    section,
+  };
+};
 
 // const addNewProduct = newProduct => {
 //   return {
@@ -53,14 +53,16 @@ export const fetchAllSections = () => async dispatch => {
   }
 };
 
-// export const fetchSingleProduct = productId => async dispatch => {
-//   try {
-//     const {data} = await axios.get(`/api/products/${productId}`);
-//     dispatch(setSingleProducts(data));
-//   } catch (error) {
-//     console.log('error fetching single product', error);
-//   }
-// };
+export const fetchSingleProduct = productId => async dispatch => {
+  try {
+    const {data} = await axios.get(
+      `/'http://192.168.1.118:8080/api/sections/:sectionId'`,
+    );
+    dispatch(setSingleSection(data));
+  } catch (error) {
+    console.log('error fetching single product', error);
+  }
+};
 
 // export const createNewProduct = (newProduct, history) => async dispatch => {
 //   try {
@@ -116,7 +118,7 @@ export const fetchAllSections = () => async dispatch => {
 // initial state
 const initialState = {
   allSections: [],
-  // singleProduct: {},
+  singleSection: {},
   // newProduct: '',
 };
 
@@ -125,8 +127,8 @@ const sectionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_SECTIONS:
       return {...state, allSections: action.allSections};
-    // case GET_SINGLE_PRODUCT:
-    //   return {...state, singleProduct: action.product};
+    case GET_SINGLE_SECTION:
+      return {...state, singleSection: action.section};
     // case ADD_NEW_PRODUCT:
     //   return {
     //     ...state,

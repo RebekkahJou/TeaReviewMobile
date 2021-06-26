@@ -9,7 +9,7 @@ import SingleTea from './SingleTea';
 const Tea = createStackNavigator();
 
 const TeaHome = () => {
-  const sections = useSelector(state => state.sections);
+  const sections = useSelector(state => state.sections.allSections);
   console.log(sections);
 
   return (

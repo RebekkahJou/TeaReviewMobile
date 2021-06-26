@@ -10,10 +10,10 @@ router.get('/', async (req, res, next) => {
     console.log('Do we still have the function?');
     console.log(Section);
     console.log(Section.findAll);
-    const sections = await Section.findAll();
-    //   {
-    //   attributes: ['id', 'title', 'time', 'description', 'instructions'],
-    // }
+    const sections = await Section.findAll({
+      attributes: ['id', 'title', 'time', 'description', 'instructions'],
+    });
+
     console.log('SECTIONS in API>>>', sections);
     res.json(sections);
   } catch (err) {

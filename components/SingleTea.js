@@ -12,7 +12,11 @@ import styles from '../public/MyStylesheet';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const SingleTea = ({route, navigation}) => {
-  const {description, title, time, instructions} = route.params;
+  // const {description, title, time, instructions} = route.params;
+  const description = 'placeholder';
+  const time = 600000;
+  const title = 'HoldPlace';
+  const instructions = 'Replace Me';
   const isDarkMode = useColorScheme() === 'dark';
 
   let stripeArea;
