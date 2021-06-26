@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   View,
@@ -13,6 +13,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Section from './Section';
 import styles from '../public/MyStylesheet';
 import {fetchAllSections} from '../store/sections';
+import {reducer} from '../store';
 
 const Sections = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -23,7 +24,7 @@ const Sections = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllSections);
+    dispatch(fetchAllSections());
   }, [dispatch]);
 
   if (allSections && allSections.length > 0) {

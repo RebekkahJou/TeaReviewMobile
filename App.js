@@ -26,7 +26,6 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="TouchUs" component={Touchables} />
           <Stack.Screen name="TeaHome" component={TeaHome} />
         </Stack.Navigator>
       </NavigationContainer>

@@ -45,6 +45,7 @@ const setSections = allSections => {
 export const fetchAllSections = () => async dispatch => {
   try {
     const {data} = await axios.get('/api/sections');
+    console.log('DATA in sections thunk>>>', data);
     dispatch(setSections(data));
   } catch (error) {
     console.log('error fetching all sections', error);

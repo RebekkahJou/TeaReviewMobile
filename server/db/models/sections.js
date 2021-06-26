@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Section = db.define('section', {
+module.exports = db.define('section', {
   title: {
     type: Sequelize.STRING,
   },
@@ -25,5 +25,3 @@ const Section = db.define('section', {
 });
 
 // class methods
-
-module.exports = Section;

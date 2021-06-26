@@ -1,16 +1,16 @@
 const router = require('express').Router();
-const {
-  models: {Section},
-} = require('../db');
+const Section = require('../db/models/sections');
 //const { requireToken } = require('./gatekeepingMiddleware');
 module.exports = router;
 
 //api/sections
 router.get('/', async (req, res, next) => {
   try {
-    const sections = await Section.findAll({
-      attributes: ['id', 'title', 'time', 'description', 'instructions'],
-    });
+    console.log(Section, 'SECTION MODEL');
+    const sections = await Section.findAll();
+    //   {
+    //   attributes: ['id', 'title', 'time', 'description', 'instructions'],
+    // }
     console.log('SECTIONS in API>>>', sections);
     res.json(sections);
   } catch (err) {

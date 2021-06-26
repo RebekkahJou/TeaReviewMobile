@@ -6,7 +6,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import sectionsReducer from './sections';
 //import usersReducer from './users';
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
   // auth,
   sections: sectionsReducer,
   //  users: usersReducer,
