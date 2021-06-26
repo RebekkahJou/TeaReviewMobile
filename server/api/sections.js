@@ -6,7 +6,10 @@ module.exports = router;
 //api/sections
 router.get('/', async (req, res, next) => {
   try {
-    console.log(Section, 'SECTION MODEL');
+    console.log('SECTION API I RUN');
+    console.log('Do we still have the function?');
+    console.log(Section);
+    console.log(Section.findAll);
     const sections = await Section.findAll();
     //   {
     //   attributes: ['id', 'title', 'time', 'description', 'instructions'],

@@ -2,13 +2,13 @@
 //if doesn't work, look into requiring './database'
 
 const db = require('./db');
-const Sequelize = require('sequelize');
+//const Sequelize = require('sequelize');
 //const User = require('./models/user');
 const Section = require('./models/sections');
 const Review = require('./models/reviews');
 
 //associations could go here!
-Section.hasMany(Review);
+Section.hasMany(Review, {foreignKey: 'sectionId'});
 Review.belongsTo(Section);
 //one-many association
 // foreign key -> orderId

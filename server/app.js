@@ -33,10 +33,10 @@ app.use((req, res, next) => {
   }
 });
 
-// // sends index.html
-// app.use('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '..', '../App.js'));
-// });
+// sends index.html
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', '../App.js'));
+});
 
 // error handling endware
 app.use((err, req, res, next) => {
