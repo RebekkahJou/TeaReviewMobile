@@ -4,6 +4,7 @@ import {
   View,
   ScrollView,
   Text,
+  Image,
   Stack,
   useColorScheme,
   Button,
@@ -13,7 +14,6 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Section from './Section';
 import styles from '../public/MyStylesheet';
 import {fetchAllSections} from '../store/sections';
-import {reducer} from '../store';
 
 const Sections = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -33,19 +33,20 @@ const Sections = () => {
         style={{
           backgroundColor: isDarkMode ? Colors.black : Colors.white,
         }}>
-        {/* EDIT HERE_SECTIONS.MAP IS NOT A FUNCITON YET */}
         {allSections.map(section => {
           return (
             <View key={section.id}>
               {section.time ? (
+                //ternary--if time exists, map as tea section with brewing time etc...
                 <Section
                   title={section.title}
                   time={section.time}
                   instructions={section.instructions}>
-                  {section.description}
+                  <Text>{section.description}</Text>
                   {'\n\n'}
                 </Section>
               ) : (
+                //ternary-- ...else map without brewing time, instructions, or button
                 <Section title={section.title}>{section.description}</Section>
               )}
               <Button
@@ -68,7 +69,13 @@ const Sections = () => {
   } else {
     return (
       <View>
-        <Text style={styles.nothingHere}>Loading!</Text>
+        <Text style={styles.nothingHere}>
+          Something has gone wrong. Have some tea while you wait for a fix.
+        </Text>
+        <Image
+          source={require('../public/teacup.png')}
+          style={styles.smallPic}
+        />
       </View>
     );
   }

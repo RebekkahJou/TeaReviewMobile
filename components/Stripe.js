@@ -5,7 +5,7 @@ import styles from '../public/MyStylesheet';
 const Stripe = props => {
   const instructions = props.instructions;
   const [instDisplay, setInstDisplay] = useState(
-    time ? 'Hold button to show brewing instructions' : ' ',
+    time ? 'Touch button to show brewing instructions' : ' ',
   );
   const time = props.time / 60000;
 

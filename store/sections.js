@@ -44,7 +44,7 @@ const setSections = allSections => {
 // THUNK
 export const fetchAllSections = () => async dispatch => {
   try {
-    const data = await axios.get('http://192.168.1.118:8080/api/sections');
+    const {data} = await axios.get('http://192.168.1.118:8080/api/sections');
     console.log('DATA in sections thunk>>>', data);
     dispatch(setSections(data));
   } catch (error) {
