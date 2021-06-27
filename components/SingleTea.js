@@ -8,15 +8,13 @@ import {
   Button,
   View,
   Image,
+  ScrollView,
 } from 'react-native';
-import SingleStripe from './SingleStripe';
 import styles from '../public/MyStylesheet';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const SingleTea = props => {
-  console.log('PROPS IN SINGLETEA,', props);
   const section = useSelector(state => state.sections.singleSection);
-  console.log('SECTION in SINGLETEA', section);
   const isDarkMode = useColorScheme() === 'dark';
 
   const dispatch = useDispatch();
@@ -31,22 +29,13 @@ const SingleTea = props => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  let stripeArea;
-  if (section && section.time) {
-    stripeArea = (
-      <SingleStripe time={section.time} instructions={section.instructions} />
-    );
-  } else {
-    stripeArea = <Image source={require('../public/teacup.png')} />;
-  }
   if (section) {
-    console.log(section, 'SECTION IN SINGLETEA line 45');
     return (
-      <View style={styles.sectionContainer}>
+      <ScrollView style={styles.sectionContainer}>
         <ImageBackground
           source={require('../public/purple01.jpg')}
           style={styles.backgroundimage}>
-          <Text style={[styles.sectionTitle]}>{section.title}</Text>
+          <Text style={styles.sectionTitle}>{section.title}</Text>
         </ImageBackground>
 
         <Button
@@ -54,22 +43,40 @@ const SingleTea = props => {
           color="#003300"
           onPress={() => props.navigation.goBack()}
         />
-
-        <Text
-          style={[
-            styles.sectionDescription,
-            {
-              color: isDarkMode ? Colors.light : Colors.dark,
-            },
-          ]}>
-          {section.description}
-          {'\n\n'}
-        </Text>
-        <View style={styles.stripe}>{stripeArea}</View>
-        <View>
-          <Text>TESTING</Text>
+        <View style={styles.description}>
+          <Text
+            style={[
+              styles.sectionDescription,
+              {
+                color: isDarkMode ? Colors.light : Colors.dark,
+              },
+            ]}>
+            {section.description}
+          </Text>
         </View>
-      </View>
+
+        {section.time && (
+          <View>
+            <View>
+              <Text style={styles.teaButton}>
+                Average brewing time: {section.time / 60000} minutes
+              </Text>
+            </View>
+            <View style={styles.instructions}>
+              <Text style={[styles.stripetext, {fontWeight: 'bold'}]}>
+                Brewing Instructions:
+              </Text>
+              <Text style={styles.stripetext}>{section.instructions}</Text>
+            </View>
+          </View>
+        )}
+        {!section.time && (
+          <Image
+            source={require('../public/teacup.png')}
+            style={styles.smallPic}
+          />
+        )}
+      </ScrollView>
     );
   } else {
     return (

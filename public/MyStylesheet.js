@@ -125,7 +125,9 @@ const styles = StyleSheet.create({
   },
   instructions: {
     backgroundColor: colors.darkgreen,
-    flexBasis: 1,
+    flexGrow: 1,
+    margin: 10,
+    padding: 10,
   },
   pic: {
     flex: 1,
@@ -151,8 +153,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   smallPic: {
-    height: 80,
-    width: 80,
+    height: 150,
+    width: 150,
   },
 
   nothingHere: {
