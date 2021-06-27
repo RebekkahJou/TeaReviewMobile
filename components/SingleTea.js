@@ -65,7 +65,10 @@ const SingleTea = props => {
           {section.description}
           {'\n\n'}
         </Text>
-        {stripeArea}
+        <View style={styles.stripe}>{stripeArea}</View>
+        <View>
+          <Text>TESTING</Text>
+        </View>
       </View>
     );
   } else {
