@@ -152,6 +152,25 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
   },
+
+  reviewTable: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'row',
+    margin: 5,
+    padding: 10,
+    borderColor: 'black',
+    borderStyle: 'solid',
+    borderWidth: 2,
+  },
+  reviewLabel: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  reviewText: {
+    fontSize: 18,
+  },
+
   smallPic: {
     height: 150,
     width: 150,

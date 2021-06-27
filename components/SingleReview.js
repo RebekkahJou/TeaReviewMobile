@@ -1,96 +1,108 @@
-// import React, {useEffect} from 'react';
-// import {useSelector, useDispatch} from 'react-redux';
-// import {fetchSingleSection} from '../store/sections';
-// import {
-//   ImageBackground,
-//   Text,
-//   useColorScheme,
-//   Button,
-//   View,
-//   Image,
-//   ScrollView,
-// } from 'react-native';
-// import styles from '../public/MyStylesheet';
-// import {Colors} from 'react-native/Libraries/NewAppScreen';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {fetchSingleReview} from '../store/sections';
+import {
+  ImageBackground,
+  Text,
+  useColorScheme,
+  Button,
+  View,
+  Image,
+  ScrollView,
+} from 'react-native';
+import styles from '../public/MyStylesheet';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-// const SingleReview = props => {
-//   const section = useSelector(state => state.sections.singleSection);
-//   const isDarkMode = useColorScheme() === 'dark';
+const SingleReview = props => {
+  const review = useSelector(state => state.reviews.singleReview);
+  const isDarkMode = useColorScheme() === 'dark';
 
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-//   useEffect(() => {
-//     try {
-//       dispatch(fetchSingleSection(props.route.name));
-//     } catch (error) {
-//       console.error('This tea is still steeping, try back later.');
-//     }
+  useEffect(() => {
+    try {
+      dispatch(fetchSingleReview(props.route.name));
+    } catch (error) {
+      console.error('This tea is still steeping, try back later.');
+    }
 
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-//   if (section) {
-//     return (
-//       <ScrollView style={styles.sectionContainer}>
-//         <ImageBackground
-//           source={require('../public/purple01.jpg')}
-//           style={styles.backgroundimage}>
-//           <Text style={styles.sectionTitle}>{section.title}</Text>
-//         </ImageBackground>
+  if (review) {
+    return (
+      <ScrollView style={styles.sectionContainer}>
+        <ImageBackground
+          source={require('../public/purple01.jpg')}
+          style={styles.backgroundimage}>
+          <Text style={styles.sectionTitle}>{review.teaName}</Text>
+        </ImageBackground>
 
-//         <Button
-//           title="Back"
-//           color="#003300"
-//           onPress={() => props.navigation.goBack()}
-//         />
-//         <View style={styles.description}>
-//           <Text
-//             style={[
-//               styles.sectionDescription,
-//               {
-//                 color: isDarkMode ? Colors.light : Colors.dark,
-//               },
-//             ]}>
-//             {section.description}
-//           </Text>
-//         </View>
+        <Button
+          title="Back"
+          color="#003300"
+          onPress={() => props.navigation.goBack()}
+        />
 
-//         {section.time && (
-//           <View>
-//             <View>
-//               <Text style={styles.teaButton}>
-//                 Average brewing time: {section.time / 60000} minutes
-//               </Text>
-//             </View>
-//             <View style={styles.instructions}>
-//               <Text style={[styles.stripetext, {fontWeight: 'bold'}]}>
-//                 Brewing Instructions:
-//               </Text>
-//               <Text style={styles.stripetext}>{section.instructions}</Text>
-//             </View>
-//           </View>
-//         )}
-//         {!section.time && (
-//           <Image
-//             source={require('../public/teacup.png')}
-//             style={styles.smallPic}
-//           />
-//         )}
-//       </ScrollView>
-//     );
-//   } else {
-//     return (
-//       <View>
-//         <Text style={styles.nothingHere}>
-//           Something has gone wrong. Have some tea while you wait for a fix.
-//         </Text>
-//         <Image
-//           source={require('../public/teacup.png')}
-//           style={styles.smallPic}
-//         />
-//       </View>
-//     );
-//   }
-// };
+        <View style={styles.reviewTable}>
+          <View>
+            <Text style={styles.sectionTitle}>{review.teaName}</Text>
+          </View>
 
-// export default SingleReview;
+          <View>
+            <Text style={styles.reviewLabel}>Type of Tea</Text>
+            <Text style={styles.reviewText}>
+              {review.teaName}, {review.format}
+            </Text>
+          </View>
+
+          <View>
+            <Text style={styles.reviewLabel}>Flavor Aspects</Text>
+            <Text style={styles.reviewText}>{review.flavors}</Text>
+          </View>
+
+          <View>
+            <Text style={styles.reviewLabel}>Where I Got It</Text>
+            <Text style={styles.reviewText}>{review.obtainedFrom}</Text>
+          </View>
+
+          <View>
+            <Text style={styles.reviewLabel}>Cost</Text>
+            <Text style={styles.reviewText}>
+              {review.cost} per {review.perQty}
+            </Text>
+          </View>
+
+          <View>
+            <Text style={styles.reviewLabel}>How I Brewed It</Text>
+            <Text style={styles.reviewText}>{review.brewingStyle}</Text>
+          </View>
+
+          <View>
+            <Text style={styles.reviewLabel}>Rebrewing Notes</Text>
+            <Text style={styles.reviewText}>{review.rebrewing}</Text>
+          </View>
+
+          <View>
+            <Text style={styles.reviewLabel}>Review</Text>
+            <Text style={styles.reviewText}>{review.review}</Text>
+          </View>
+        </View>
+      </ScrollView>
+    );
+  } else {
+    return (
+      <View>
+        <Text style={styles.nothingHere}>
+          Something has gone wrong. Have some tea while you wait for a fix.
+        </Text>
+        <Image
+          source={require('../public/teacup.png')}
+          style={styles.smallPic}
+        />
+      </View>
+    );
+  }
+};
+
+export default SingleReview;
