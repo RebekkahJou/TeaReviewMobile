@@ -26,15 +26,9 @@ const Section = ({description, title, time, instructions}) => {
         <Text style={[styles.sectionTitle]}>{title}</Text>
       </ImageBackground>
 
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {description}
-      </Text>
+      <View>
+        <Text style={[styles.sectionDescription]}>{description}</Text>
+      </View>
       <View>{stripeArea}</View>
     </View>
   );

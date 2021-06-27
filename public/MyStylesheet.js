@@ -142,6 +142,11 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
   },
+  smallPic: {
+    height: 80,
+    width: 80,
+  },
+
   nothingHere: {
     fontSize: 30,
     fontWeight: 'bold',

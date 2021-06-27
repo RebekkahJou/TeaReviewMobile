@@ -4,7 +4,7 @@ const TOKEN = 'token';
 
 // ACTION TYPES
 const GET_ALL_SECTIONS = 'GET_ALL_SECTIONS';
-// const GET_SINGLE_PRODUCT = 'GET_SINGLE_PRODUCT';
+const GET_SINGLE_SECTION = 'GET_SINGLE_SECTION';
 // const ADD_NEW_PRODUCT = 'ADD_NEW_PRODUCT';
 // const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 // const DELETE_PRODUCT = 'DELETE_PRODUCT';
@@ -17,12 +17,12 @@ const setSections = allSections => {
   };
 };
 
-// const setSingleProducts = product => {
-//   return {
-//     type: GET_SINGLE_PRODUCT,
-//     product,
-//   };
-// };
+const setSingleSection = section => {
+  return {
+    type: GET_SINGLE_SECTION,
+    section,
+  };
+};
 
 // const addNewProduct = newProduct => {
 //   return {
@@ -42,10 +42,22 @@ const setSections = allSections => {
 // });
 
 // THUNK
+// Cary
+// export const fetchAllSections = () => async dispatch => {
+//   try {
+//     const {data} = await axios.get('http://192.168.1.118:8080/api/sections');
+//     console.log('DATA in sections thunk>>>', data);
+//     dispatch(setSections(data));
+//   } catch (error) {
+//     console.log('error fetching all sections', error);
+//     console.log(error.response.data);
+//   }
+// };
+//Durham
 export const fetchAllSections = () => async dispatch => {
   try {
-    const data = await axios.get('http://192.168.1.118:8080/api/sections');
-    console.log('DATA in sections thunk>>>', data);
+    const {data} = await axios.get('http://10.0.0.17:8080/api/sections');
+    //console.log('DATA in sections thunk>>>', data);
     dispatch(setSections(data));
   } catch (error) {
     console.log('error fetching all sections', error);
@@ -53,14 +65,31 @@ export const fetchAllSections = () => async dispatch => {
   }
 };
 
-// export const fetchSingleProduct = productId => async dispatch => {
+//When changing to production mode (process.env.PRODUCTION), deploy on a host like Heroku, and then change http call to deployed url
+//Cary
+// export const fetchSingleSection = sectionId => async dispatch => {
 //   try {
-//     const {data} = await axios.get(`/api/products/${productId}`);
-//     dispatch(setSingleProducts(data));
+//     const {data} = await axios.get(
+//       `http://192.168.1.118:8080/api/sections/${sectionId}`,
+//     );
+//     dispatch(setSingleSection(data));
 //   } catch (error) {
-//     console.log('error fetching single product', error);
+//     console.log('error fetching single section', error);
 //   }
 // };
+//Durham
+export const fetchSingleSection = sectionId => async dispatch => {
+  try {
+    const {data} = await axios.get(
+      `http://10.0.0.17:8080/api/sections/${sectionId}`,
+    );
+    console.log('DATA in singleSection thunk>>>', data);
+    dispatch(setSingleSection(data));
+  } catch (error) {
+    console.log('error fetching this section', error);
+    console.log(error.response.data);
+  }
+};
 
 // export const createNewProduct = (newProduct, history) => async dispatch => {
 //   try {
@@ -116,7 +145,7 @@ export const fetchAllSections = () => async dispatch => {
 // initial state
 const initialState = {
   allSections: [],
-  // singleProduct: {},
+  singleSection: {},
   // newProduct: '',
 };
 
@@ -125,8 +154,9 @@ const sectionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_SECTIONS:
       return {...state, allSections: action.allSections};
-    // case GET_SINGLE_PRODUCT:
-    //   return {...state, singleProduct: action.product};
+    case GET_SINGLE_SECTION:
+      console.log('REDUCER???');
+      return {...state, singleSection: action.section};
     // case ADD_NEW_PRODUCT:
     //   return {
     //     ...state,
