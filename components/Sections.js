@@ -41,13 +41,14 @@ const Sections = () => {
                 <Section
                   title={section.title}
                   time={section.time}
-                  instructions={section.instructions}>
-                  <Text>{section.description}</Text>
-                  {'\n\n'}
-                </Section>
+                  instructions={section.instructions}
+                  description={section.description}
+                />
               ) : (
                 //ternary-- ...else map without brewing time, instructions, or button
-                <Section title={section.title}>{section.description}</Section>
+                <Section
+                  title={section.title}
+                  description={section.description}></Section>
               )}
               <Button
                 color="#003300"

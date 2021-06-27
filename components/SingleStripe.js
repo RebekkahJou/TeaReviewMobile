@@ -6,12 +6,13 @@ import TouchButton from './TouchButton';
 const SingleStripe = props => {
   const instructions = props.instructions;
   const time = props.time;
+  console.log(props);
 
   return (
     <View style={styles.stripe}>
       <View style={styles.timer}>
         <Text style={styles.stripetext}>
-          Suggested brewing time: {time / 60000}
+          Average suggested brewing time: {time / 60000} minutes
         </Text>
       </View>
 

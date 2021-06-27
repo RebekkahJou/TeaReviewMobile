@@ -32,7 +32,16 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
+    flexGrow: 1,
+    minHeight: 20,
+    padding: 5,
+    color: 'black',
   },
+  box: {
+    padding: 5,
+    margin: 15,
+  },
+
   highlight: {
     fontWeight: '700',
   },
@@ -106,7 +115,7 @@ const styles = StyleSheet.create({
   stripetext: {
     color: 'white',
     padding: 5,
-    textAlign: 'center',
+    fontSize: 17,
   },
   timer: {
     backgroundColor: colors.purple,
@@ -116,8 +125,9 @@ const styles = StyleSheet.create({
   },
   instructions: {
     backgroundColor: colors.darkgreen,
-    flexWrap: 'wrap',
-    flexBasis: 1,
+    flexGrow: 1,
+    margin: 10,
+    padding: 10,
   },
   pic: {
     flex: 1,
@@ -143,8 +153,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   smallPic: {
-    height: 80,
-    width: 80,
+    height: 150,
+    width: 150,
   },
 
   nothingHere: {

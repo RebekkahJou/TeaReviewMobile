@@ -8,14 +8,13 @@ import styles from '../public/MyStylesheet';
 
 const Section = ({description, title, time, instructions}) => {
   const isDarkMode = useColorScheme() === 'dark';
-
   let stripeArea;
   if (time) {
     stripeArea = (
       <Stripe time={time} instructions={instructions} style={styles.button} />
     );
   } else {
-    <Image source={require('../public/teacup.png')} styles={styles.pic} />;
+    <Image source={require('../public/teacup.png')} styles={styles.smallPic} />;
   }
 
   return (
@@ -26,9 +25,10 @@ const Section = ({description, title, time, instructions}) => {
         <Text style={[styles.sectionTitle]}>{title}</Text>
       </ImageBackground>
 
-      <View>
+      <View style={styles.box}>
         <Text style={[styles.sectionDescription]}>{description}</Text>
       </View>
+
       <View>{stripeArea}</View>
     </View>
   );
