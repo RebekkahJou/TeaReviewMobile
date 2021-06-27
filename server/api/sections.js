@@ -13,8 +13,7 @@ router.get('/', async (req, res, next) => {
     const sections = await Section.findAll({
       attributes: ['id', 'title', 'time', 'description', 'instructions'],
     });
-
-    console.log('SECTIONS in API>>>', sections);
+    //console.log('SECTIONS in API>>>', sections);
     res.json(sections);
   } catch (err) {
     next(err);

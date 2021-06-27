@@ -53,7 +53,7 @@ const Sections = () => {
                 color="#003300"
                 title="Closer Look"
                 onPress={() => {
-                  navigation.navigate(`${section.title}`, {
+                  navigation.navigate(`${section.id}`, {
                     title: section.title,
                     instructions: section.instructions,
                     description: section.description,

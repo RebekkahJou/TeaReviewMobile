@@ -15,7 +15,7 @@ const TeaHome = () => {
   return (
     <Tea.Navigator>
       {sections.map(({id, title}) => {
-        return <Tea.Screen name={title} key={id} component={SingleTea} />;
+        return <Tea.Screen name={`${id}`} key={id} component={SingleTea} />;
       })}
       <Tea.Screen name="Tea List" component={Sections} />
     </Tea.Navigator>

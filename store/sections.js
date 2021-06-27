@@ -42,10 +42,22 @@ const setSingleSection = section => {
 // });
 
 // THUNK
+// Cary
+// export const fetchAllSections = () => async dispatch => {
+//   try {
+//     const {data} = await axios.get('http://192.168.1.118:8080/api/sections');
+//     console.log('DATA in sections thunk>>>', data);
+//     dispatch(setSections(data));
+//   } catch (error) {
+//     console.log('error fetching all sections', error);
+//     console.log(error.response.data);
+//   }
+// };
+//Durham
 export const fetchAllSections = () => async dispatch => {
   try {
-    const {data} = await axios.get('http://192.168.1.118:8080/api/sections');
-    console.log('DATA in sections thunk>>>', data);
+    const {data} = await axios.get('http://10.0.0.17:8080/api/sections');
+    //console.log('DATA in sections thunk>>>', data);
     dispatch(setSections(data));
   } catch (error) {
     console.log('error fetching all sections', error);
@@ -53,14 +65,29 @@ export const fetchAllSections = () => async dispatch => {
   }
 };
 
-export const fetchSingleProduct = productId => async dispatch => {
+//When changing to production mode (process.env.PRODUCTION), deploy on a host like Heroku, and then change http call to deployed url
+//Cary
+// export const fetchSingleSection = sectionId => async dispatch => {
+//   try {
+//     const {data} = await axios.get(
+//       `http://192.168.1.118:8080/api/sections/${sectionId}`,
+//     );
+//     dispatch(setSingleSection(data));
+//   } catch (error) {
+//     console.log('error fetching single section', error);
+//   }
+// };
+//Durham
+export const fetchSingleSection = sectionId => async dispatch => {
   try {
     const {data} = await axios.get(
-      `/'http://192.168.1.118:8080/api/sections/:sectionId'`,
+      `http://10.0.0.17:8080/api/sections/${sectionId}`,
     );
+    console.log('DATA in singleSection thunk>>>', data);
     dispatch(setSingleSection(data));
   } catch (error) {
-    console.log('error fetching single product', error);
+    console.log('error fetching this section', error);
+    console.log(error.response.data);
   }
 };
 
@@ -128,6 +155,7 @@ const sectionsReducer = (state = initialState, action) => {
     case GET_ALL_SECTIONS:
       return {...state, allSections: action.allSections};
     case GET_SINGLE_SECTION:
+      console.log('REDUCER???');
       return {...state, singleSection: action.section};
     // case ADD_NEW_PRODUCT:
     //   return {
