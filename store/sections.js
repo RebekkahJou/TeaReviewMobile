@@ -57,7 +57,6 @@ const setSingleSection = section => {
 export const fetchAllSections = () => async dispatch => {
   try {
     const {data} = await axios.get('http://10.0.0.17:8080/api/sections');
-    //console.log('DATA in sections thunk>>>', data);
     dispatch(setSections(data));
   } catch (error) {
     console.log('error fetching all sections', error);
@@ -83,7 +82,6 @@ export const fetchSingleSection = sectionId => async dispatch => {
     const {data} = await axios.get(
       `http://10.0.0.17:8080/api/sections/${sectionId}`,
     );
-    console.log('DATA in singleSection thunk>>>', data);
     dispatch(setSingleSection(data));
   } catch (error) {
     console.log('error fetching this section', error);
@@ -155,7 +153,6 @@ const sectionsReducer = (state = initialState, action) => {
     case GET_ALL_SECTIONS:
       return {...state, allSections: action.allSections};
     case GET_SINGLE_SECTION:
-      console.log('REDUCER???');
       return {...state, singleSection: action.section};
     // case ADD_NEW_PRODUCT:
     //   return {
