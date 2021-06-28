@@ -24,7 +24,7 @@ const SingleTea = props => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    console.log('PROPSROUTENAME', props.route.name);
+    // console.log('PROPSROUTENAME', props.route.name);
 
     try {
       dispatch(fetchSingleSection(props.route.name));
@@ -94,6 +94,7 @@ const SingleTea = props => {
                 <Button
                   color="#003300"
                   key={review.id}
+                  name={review.id}
                   title={review.teaName}
                   onPress={() => {
                     navigation.navigate(`${review.id}`);

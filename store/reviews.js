@@ -30,60 +30,74 @@ const setFilteredReviews = filteredReviews => {
 };
 
 // THUNK
-// Cary
-// export const fetchAllReviews = () => async dispatch => {
-//   try {
-//     const {data} = await axios.get('http://192.168.1.118:8080/api/reviews');
-//     console.log('DATA in reviews thunk>>>', data);
-//     dispatch(setReviews(data));
-//   } catch (error) {
-//     console.log('error fetching all reviews', error);
-//     console.log(error.response.data);
-//   }
-// };
-//Durham
+// Cary;
 export const fetchAllReviews = () => async dispatch => {
   try {
-    const {data} = await axios.get('http://10.0.0.17:8080/api/reviews');
-    //console.log('DATA in reviews thunk>>>', data);
+    const {data} = await axios.get('http://192.168.1.118:8080/api/reviews');
+    console.log('DATA in reviews thunk>>>', data);
     dispatch(setReviews(data));
   } catch (error) {
     console.log('error fetching all reviews', error);
     console.log(error.response.data);
   }
 };
+//Durham
+// export const fetchAllReviews = () => async dispatch => {
+//   try {
+//     const {data} = await axios.get('http://10.0.0.17:8080/api/reviews');
+//     //console.log('DATA in reviews thunk>>>', data);
+//     dispatch(setReviews(data));
+//   } catch (error) {
+//     console.log('error fetching all reviews', error);
+//     console.log(error.response.data);
+//   }
+// };
 
 //When changing to production mode (process.env.PRODUCTION), deploy on a host like Heroku, and then change http call to deployed url
 //Cary
-// export const fetchSingleReview = reviewId => async dispatch => {
-//   try {
-//     const {data} = await axios.get(
-//       `http://192.168.1.118:8080/api/reviews/${reviewId}`,
-//     );
-//     dispatch(setSingleReview(data));
-//   } catch (error) {
-//     console.log('error fetching single review', error);
-//   }
-// };
-//Durham
 export const fetchSingleReview = reviewId => async dispatch => {
   try {
     const {data} = await axios.get(
-      `http://10.0.0.17:8080/api/reviews/${reviewId}`,
+      `http://192.168.1.118:8080/api/reviews/${reviewId}`,
     );
-    console.log('DATA in singleReview thunk>>>', data);
     dispatch(setSingleReview(data));
   } catch (error) {
-    console.log('error fetching this review', error);
-    console.log(error.response.data);
+    console.log('error fetching single review', error);
   }
 };
+//Durham
+// export const fetchSingleReview = reviewId => async dispatch => {
+//   try {
+//     const {data} = await axios.get(
+//       `http://10.0.0.17:8080/api/reviews/${reviewId}`,
+//     );
+//     console.log('DATA in singleReview thunk>>>', data);
+//     dispatch(setSingleReview(data));
+//   } catch (error) {
+//     console.log('error fetching this review', error);
+//     console.log(error.response.data);
+//   }
+// };
 
 //Durham
+// export const fetchFilteredReviews = sectionId => async dispatch => {
+//   try {
+//     const data = await axios.get(
+//       `http://10.0.0.17:8080/api/reviews/sections/${sectionId}`,
+//     );
+//     //console.log('DATA in reviews thunk>>>', data);
+//     dispatch(setFilteredReviews(data));
+//   } catch (error) {
+//     console.log('error fetching filtered reviews', error);
+//     console.log(error.response.data);
+//   }
+// };
+
+//Cary
 export const fetchFilteredReviews = sectionId => async dispatch => {
   try {
     const data = await axios.get(
-      `http://10.0.0.17:8080/api/reviews/sections/${sectionId}`,
+      `http://192.168.1.118:8080/api/reviews/sections/${sectionId}`,
     );
     //console.log('DATA in reviews thunk>>>', data);
     dispatch(setFilteredReviews(data));

@@ -21,7 +21,6 @@ router.get('/', async (req, res, next) => {
         'review',
       ],
     });
-    console.log('Revoews in API>>>', reviews);
     res.json(reviews);
   } catch (err) {
     next(err);
