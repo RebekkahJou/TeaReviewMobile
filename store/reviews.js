@@ -5,6 +5,7 @@ const TOKEN = 'token';
 // ACTION TYPES
 const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS';
 const GET_SINGLE_REVIEW = 'GET_SINGLE_REVIEW';
+const GET_FILTERED_REVIEWS = 'GET_FILTERED_REVIEWS';
 
 // ACTION CREATORS
 const setReviews = allReviews => {
@@ -20,6 +21,14 @@ const setSingleReview = review => {
     review,
   };
 };
+
+const setFilteredReviews = filteredReviews => {
+  return {
+    type: GET_FILTERED_REVIEWS,
+    filteredReviews,
+  };
+};
+
 // THUNK
 // Cary
 // export const fetchAllReviews = () => async dispatch => {
@@ -70,10 +79,25 @@ export const fetchSingleReview = reviewId => async dispatch => {
   }
 };
 
+//Durham
+export const fetchFilteredReviews = sectionId => async dispatch => {
+  try {
+    const data = await axios.get(
+      `http://10.0.0.17:8080/api/reviews/sections/${sectionId}`,
+    );
+    //console.log('DATA in reviews thunk>>>', data);
+    dispatch(setFilteredReviews(data));
+  } catch (error) {
+    console.log('error fetching filtered reviews', error);
+    console.log(error.response.data);
+  }
+};
+
 // initial state
 const initialState = {
   allReviews: [],
   singleReview: {},
+  filteredReviews: [],
 };
 
 // REDUCER
@@ -83,7 +107,8 @@ const reviewsReducer = (state = initialState, action) => {
       return {...state, allReviews: action.allReviews};
     case GET_SINGLE_REVIEW:
       return {...state, singleReview: action.review};
-
+    case GET_FILTERED_REVIEWS:
+      return {...state, filteredReviews: action.filteredReviews};
     default:
       return state;
   }

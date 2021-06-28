@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Review = require('../db/models/reviews');
 const Section = require('../db/models/sections');
 //const { requireToken } = require('./gatekeepingMiddleware');
 module.exports = router;
@@ -6,10 +7,6 @@ module.exports = router;
 //api/sections
 router.get('/', async (req, res, next) => {
   try {
-    console.log('SECTION API I RUN');
-    console.log('Do we still have the function?');
-    console.log(Section);
-    console.log(Section.findAll);
     const sections = await Section.findAll({
       attributes: ['id', 'title', 'time', 'description', 'instructions'],
     });
@@ -27,6 +24,20 @@ router.get('/:sectionId', async (req, res, next) => {
       attributes: ['id', 'title', 'time', 'description', 'instructions'],
     });
     res.json(section);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//api/sections/:sectionId/reviews
+router.get('/:sectionId/reviews', async (req, res, next) => {
+  try {
+    const sectionReviews = await Section.findAll({
+      where: {id: req.params.sectionId},
+      attributes: ['id', 'title', 'time', 'description', 'instructions'],
+      include: [{model: Review, attributes: ['id', 'teaName']}],
+    });
+    res.json(sectionReviews);
   } catch (error) {
     next(error);
   }

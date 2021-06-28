@@ -1,16 +1,15 @@
-import {NavigationContainer, StackActions} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import Home from './Home';
+import {useSelector} from 'react-redux';
 import Sections from './Sections';
 import SingleTea from './SingleTea';
+import SingleReview from './SingleReview';
 
 const Tea = createStackNavigator();
 
 const TeaHome = () => {
   const sections = useSelector(state => state.sections.allSections);
-  console.log(sections);
+  const reviews = useSelector(state => state.reviews.allReviews);
 
   return (
     <Tea.Navigator>
@@ -18,6 +17,15 @@ const TeaHome = () => {
         return <Tea.Screen name={`${id}`} key={id} component={SingleTea} />;
       })}
       <Tea.Screen name="Tea List" component={Sections} />
+      {reviews.map(review => {
+        return (
+          <Tea.Screen
+            name={`${review.id}`}
+            key={review.id}
+            component={SingleReview}
+          />
+        );
+      })}
     </Tea.Navigator>
   );
 };
